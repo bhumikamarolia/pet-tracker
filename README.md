@@ -63,7 +63,6 @@ Then open http://localhost:8080
 - `exception/` - Global exception handler  
 - `test/` - Unit and controller tests
 
-
 ## Author
 
 Created by Bhumika Marolia as part of an interview backend coding task.
