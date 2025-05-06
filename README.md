@@ -84,14 +84,6 @@ Then open http://localhost:8080
 - `exception/` - Global exception handler  
 - `test/` - Unit and controller tests
 
-## Interview Notes
-
-- Used single table inheritance (`@Inheritance(strategy = SINGLE_TABLE)`)
-- Distinction between Dog and Cat via `@DiscriminatorValue`
-- Validated Cat-specific field (`lostTracker`) using logic in service
-- Custom global exception handler for clean API errors
-- Designed for clarity, testability, and separation of concerns
-
 ## Author
 
 Created by Bhumika Marolia as part of an interview backend coding task.
