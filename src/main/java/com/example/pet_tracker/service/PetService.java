@@ -9,6 +9,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Service class that handles business logic for managing pets.
+ */
 @Service
 public class PetService {
 
@@ -17,7 +20,15 @@ public class PetService {
     public PetService(PetRepository petRepository) {
         this.petRepository = petRepository;
     }
-
+   
+     /**
+     * Saves a pet to the repository.
+     * If the pet is a Cat, it validates that the 'lostTracker' field is not null.
+     *
+     * @param pet the pet to be saved (Dog or Cat)
+     * @return the saved Pet entity
+     * @throws IllegalArgumentException if Cat has null 'lostTracker' field
+     */
     public Pet savePet(Pet pet) {
         if (pet instanceof Cat) {
             Cat cat = (Cat) pet;
@@ -28,11 +39,12 @@ public class PetService {
         return petRepository.save(pet);
     }
     
-
+    //Retrieves all pets from the repository.
     public List<Pet> getAllPets() {
         return petRepository.findAll();
     }
-
+    
+    //Retrieves all pets that are out of zone and groups them by type and tracker size
     public Map<String, Long> getOutOfZoneGroupedCounts() {
         List<Pet> outOfZone = petRepository.findByInZoneFalse();
         Map<String, Long> grouped = new HashMap<>();

@@ -24,26 +24,11 @@ A simple Spring Boot application for tracking pets (Dogs and Cats) with in-zone 
 ## API Endpoints
 
 ### Add Dog
-
 POST /pets/dog
-Content-Type: application/json
-
-{
-"trackerType": "MEDIUM",
-"ownerId": 101,
-"inZone": false
-}
 
 ### Add Cat
 POST /pets/cat
-Content-Type: application/json
 
-{
-"trackerType": "SMALL",
-"ownerId": 102,
-"inZone": false,
-"lostTracker": true
-}
 
 ### Add Cat without lostTracker (will fail)
 
@@ -60,12 +45,6 @@ GET /pets
 
 GET /pets/out-of-zone
 
-Response:
-
-{
-"Dog-MEDIUM": 1,
-"Cat-SMALL": 2
-}
 
 ## Running Tests
 mvnd test
@@ -84,13 +63,6 @@ Then open http://localhost:8080
 - `exception/` - Global exception handler  
 - `test/` - Unit and controller tests
 
-## Interview Notes
-
-- Used single table inheritance (`@Inheritance(strategy = SINGLE_TABLE)`)
-- Distinction between Dog and Cat via `@DiscriminatorValue`
-- Validated Cat-specific field (`lostTracker`) using logic in service
-- Custom global exception handler for clean API errors
-- Designed for clarity, testability, and separation of concerns
 
 ## Author
 
