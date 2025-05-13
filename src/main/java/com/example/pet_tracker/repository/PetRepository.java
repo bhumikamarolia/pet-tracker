@@ -12,4 +12,5 @@ import java.util.List;
 public interface PetRepository extends JpaRepository<Pet, Long> {
    // Finds all pets that are currently out of zone (inZone = false).
     List<Pet> findByInZoneFalse();
+
 }

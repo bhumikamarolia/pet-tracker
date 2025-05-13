@@ -7,9 +7,20 @@ A simple Spring Boot application for tracking pets (Dogs and Cats) with in-zone 
 - REST API to add and track Dogs and Cats  
 - Single Table Inheritance using `@Inheritance`  
 - Validation: Cat must have `lostTracker` field  
+- DTO-based input validation with `@NotNull`
 - Endpoint to get pets that are out of zone, grouped by type and tracker  
 - H2 in-memory database — no setup needed  
-- Unit tests for service and controller layers
+- Unit & integration tests using JUnit, Mockito, and MockMvc
+- Global error handling using `@ControllerAdvice`
+- Structured error responses (e.g. `{"lostTracker": "must not be null"}`)
+
+## 🧠 Design Considerations
+
+- **Scalable Architecture**: Clean separation between layers enables easy feature scaling.
+- **DTOs for Input/Output**: Prevents entity leakage and improves maintainability.
+- **Validation Logic**: Enforced via Java Bean Validation and custom business checks.
+- **Structured Error Responses**: API returns user-friendly and consistent error messages.
+- **Extensible Logic**: Easily extendable to more pet types or tracker features.
 
 ## Technologies Used
 
@@ -57,11 +68,12 @@ Then open http://localhost:8080
 ## Project Structure
 
 - `model/` - Pet, Dog, Cat  
+- `dto/` - Input/output objects: DogDTO, CatDTO, PetResponseDTO
 - `repository/` - PetRepository  
 - `service/` - PetService (with validation logic)  
 - `controller/` - PetController (REST APIs)  
 - `exception/` - Global exception handler  
-- `test/` - Unit and controller tests
+- `test/` - Unit and integration tests
 
 ## Author
 

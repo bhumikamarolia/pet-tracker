@@ -1,6 +1,10 @@
 package com.example.pet_tracker.service;
 
+import com.example.pet_tracker.dto.CatDTO;
+import com.example.pet_tracker.dto.DogDTO;
+import com.example.pet_tracker.dto.PetResponseDTO;
 import com.example.pet_tracker.model.Cat;
+import com.example.pet_tracker.model.Dog;
 import com.example.pet_tracker.model.Pet;
 import com.example.pet_tracker.repository.PetRepository;
 import org.springframework.stereotype.Service;
@@ -56,4 +60,24 @@ public class PetService {
 
         return grouped;
     }
+
+    public Dog mapToDogEntity(DogDTO dto) {
+    return new Dog(dto.getTrackerType(), dto.getOwnerId(), dto.getInZone());
+    }
+
+    public Cat mapToCatEntity(CatDTO dto) {
+        return new Cat(dto.getTrackerType(), dto.getOwnerId(), dto.getInZone(), dto.getLostTracker());
+    }
+
+    public PetResponseDTO mapToResponse(Pet pet) {
+    String petType = (pet instanceof Cat) ? "CAT" : "DOG";
+    return new PetResponseDTO(
+        pet.getId(),
+        pet.getTrackerType(),
+        pet.getOwnerId(),
+        pet.getInZone(),
+        petType
+    );
+}
+
 }
