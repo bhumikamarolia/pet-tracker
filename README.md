@@ -14,7 +14,7 @@ A simple Spring Boot application for tracking pets (Dogs and Cats) with in-zone 
 - Global error handling using `@ControllerAdvice`
 - Structured error responses (e.g. `{"lostTracker": "must not be null"}`)
 
-## 🧠 Design Considerations
+## Design Considerations
 
 - **Scalable Architecture**: Clean separation between layers enables easy feature scaling.
 - **DTOs for Input/Output**: Prevents entity leakage and improves maintainability.
